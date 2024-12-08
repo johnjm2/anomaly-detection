@@ -64,11 +64,11 @@ anomaly-detection/
    python3 dmd_analysis.py
 ```
 3. Output:
-- Predictions saved to ```results/dmd_predictions.csv``` 
+- Predictions saved to ```predictions/dmd_predictions.csv``` 
 
 ### Step 2: Simulate Streaming and Detect Anomalies
 
-1. Add test input files to the ``streaming_data/`` folder (e.g., ``sample_data1.csv``).
+1. Add test input files to the ``streaming/`` folder (e.g., ``sample_data1.csv``).
 2. Run the pyspark_test.py script with Spark:
 ```bash
    spark-submit pyspark_test.py
