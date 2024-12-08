@@ -1,9 +1,15 @@
 import pandas as pd
 from pydmd import DMD
 import numpy as np
+import os
 
-# Load the data from a CSV file
-df = pd.read_csv('training_data.csv', parse_dates=['date'])
+
+# Correct file path
+script_dir = os.path.dirname(__file__)
+training_file = os.path.join(script_dir, 'data', 'training', 'training_data.csv')
+
+# Load the data from the correct file
+df = pd.read_csv(training_file, parse_dates=['date'])
 
 # Normalize the date to remove the time component
 df['date'] = df['date'].dt.normalize()
@@ -18,7 +24,7 @@ data_for_dmd = df_connect['connect_count'].values.reshape(1, -1)
 dmd = DMD(svd_rank=-1)
 dmd.fit(data_for_dmd)
 
-# Predict future 'Connect' activities for the next 132 days
+# Predict future 'Connect' activities for the next 7 days
 future_timesteps = 7  # Number of timesteps to predict
 
 # Function to predict future states using DMD
@@ -52,6 +58,7 @@ predictions_df['predicted_count'] = predictions_df['predicted_count'].apply(lamb
 predictions_df['upper_threshold'] = predictions_df['upper_threshold'].apply(lambda x: np.real(x))
 
 # Save the DataFrame to a CSV file
-predictions_df.to_csv('dmd_predictions.csv', index=False)
+output_file = os.path.join(os.path.dirname(__file__), 'predictions', 'dmd_predictions.csv')
+predictions_df.to_csv(output_file, index=False)
+print(f"Predictions and thresholds saved to '{output_file}'")
 
-print("Predictions and thresholds saved to 'dmd_predictions.csv'")
