@@ -2,7 +2,7 @@
 
 ## Overview
 
-his project demonstrates an anomaly detection pipeline using Dynamic Mode Decomposition (DMD) for predictive modeling and Apache Spark for real-time stream processing. It is designed to replicate real-world scenarios involving real-time data ingestion, anomaly detection, and stream processing.
+This project demonstrates an anomaly detection pipeline using Dynamic Mode Decomposition (DMD) for predictive modeling and Apache Spark for real-time stream processing. It is designed to replicate real-world scenarios involving real-time data ingestion, anomaly detection, and stream processing.
 
 The training dataset consists of user activity logs, tracking Connect and Disconnect events for individual users on specific devices (e.g., PCs). Each row in the dataset includes:
 
